@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "Location"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "facts": {
+      "type": "blocks"
+    },
+    "sublocations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sublocation.sublocation",
+      "mappedBy": "location"
+    },
+    "things_to_dos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::things-to-do.things-to-do",
+      "mappedBy": "location"
+    },
+    "selling_packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::selling-package.selling-package",
+      "mappedBy": "location"
+    }
+  }
+}

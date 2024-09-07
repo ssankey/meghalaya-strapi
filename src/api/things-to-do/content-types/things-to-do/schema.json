@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "things_to_dos",
+  "info": {
+    "singularName": "things-to-do",
+    "pluralName": "things-to-dos",
+    "displayName": "Things to Do"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "location": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location.location",
+      "inversedBy": "things_to_dos"
+    }
+  }
+}
