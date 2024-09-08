@@ -4,7 +4,8 @@
   "info": {
     "singularName": "location",
     "pluralName": "locations",
-    "displayName": "Location"
+    "displayName": "Location",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,14 +23,15 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "facts": {
       "type": "blocks"
@@ -44,12 +46,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::things-to-do.things-to-do",
-      "mappedBy": "location"
-    },
-    "selling_packages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::selling-package.selling-package",
       "mappedBy": "location"
     }
   }

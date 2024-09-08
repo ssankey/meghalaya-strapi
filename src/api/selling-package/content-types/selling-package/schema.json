@@ -4,7 +4,8 @@
   "info": {
     "singularName": "selling-package",
     "pluralName": "selling-packages",
-    "displayName": "Selling Package"
+    "displayName": "Selling Package",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,20 +23,21 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
-    "location": {
+    "tour_package": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::location.location",
-      "inversedBy": "selling_packages"
+      "relation": "oneToOne",
+      "target": "api::tour-package.tour-package",
+      "inversedBy": "selling_package"
     }
   }
 }

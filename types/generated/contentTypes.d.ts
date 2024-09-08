@@ -794,6 +794,7 @@ export interface ApiLocationLocation extends Schema.CollectionType {
     singularName: 'location';
     pluralName: 'locations';
     displayName: 'Location';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -807,7 +808,7 @@ export interface ApiLocationLocation extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     facts: Attribute.Blocks;
     sublocations: Attribute.Relation<
       'api::location.location',
@@ -818,11 +819,6 @@ export interface ApiLocationLocation extends Schema.CollectionType {
       'api::location.location',
       'oneToMany',
       'api::things-to-do.things-to-do'
-    >;
-    selling_packages: Attribute.Relation<
-      'api::location.location',
-      'oneToMany',
-      'api::selling-package.selling-package'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -848,6 +844,7 @@ export interface ApiSellingPackageSellingPackage extends Schema.CollectionType {
     singularName: 'selling-package';
     pluralName: 'selling-packages';
     displayName: 'Selling Package';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -861,11 +858,11 @@ export interface ApiSellingPackageSellingPackage extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    location: Attribute.Relation<
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    tour_package: Attribute.Relation<
       'api::selling-package.selling-package',
-      'manyToOne',
-      'api::location.location'
+      'oneToOne',
+      'api::tour-package.tour-package'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -905,7 +902,7 @@ export interface ApiSublocationSublocation extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     location: Attribute.Relation<
       'api::sublocation.sublocation',
       'manyToOne',
@@ -935,6 +932,7 @@ export interface ApiThingsToDoThingsToDo extends Schema.CollectionType {
     singularName: 'things-to-do';
     pluralName: 'things-to-dos';
     displayName: 'Things to Do';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -948,7 +946,7 @@ export interface ApiThingsToDoThingsToDo extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     location: Attribute.Relation<
       'api::things-to-do.things-to-do',
       'manyToOne',
@@ -965,6 +963,67 @@ export interface ApiThingsToDoThingsToDo extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::things-to-do.things-to-do',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTourPackageTourPackage extends Schema.CollectionType {
+  collectionName: 'tour_packages';
+  info: {
+    singularName: 'tour-package';
+    pluralName: 'tour-packages';
+    displayName: 'Tour Package';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    location: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    duration: Attribute.String;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    itinerary: Attribute.Component<'itinerary.itinerary', true>;
+    inclusion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    exclusion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    selling_package: Attribute.Relation<
+      'api::tour-package.tour-package',
+      'oneToOne',
+      'api::selling-package.selling-package'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tour-package.tour-package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tour-package.tour-package',
       'oneToOne',
       'admin::user'
     > &
@@ -994,6 +1053,7 @@ declare module '@strapi/types' {
       'api::selling-package.selling-package': ApiSellingPackageSellingPackage;
       'api::sublocation.sublocation': ApiSublocationSublocation;
       'api::things-to-do.things-to-do': ApiThingsToDoThingsToDo;
+      'api::tour-package.tour-package': ApiTourPackageTourPackage;
     }
   }
 }

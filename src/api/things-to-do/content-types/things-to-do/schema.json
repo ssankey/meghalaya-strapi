@@ -4,7 +4,8 @@
   "info": {
     "singularName": "things-to-do",
     "pluralName": "things-to-dos",
-    "displayName": "Things to Do"
+    "displayName": "Things to Do",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,14 +23,15 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "location": {
       "type": "relation",

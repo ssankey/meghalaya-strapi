@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_itinerary_itineraries",
+  "info": {
+    "displayName": "itinerary"
+  },
+  "options": {},
+  "attributes": {
+    "day": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

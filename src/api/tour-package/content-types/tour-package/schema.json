@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_packages",
+  "info": {
+    "singularName": "tour-package",
+    "pluralName": "tour-packages",
+    "displayName": "Tour Package",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "duration": {
+      "type": "string"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "itinerary": {
+      "type": "component",
+      "repeatable": true,
+      "component": "itinerary.itinerary"
+    },
+    "inclusion": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "exclusion": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "selling_package": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::selling-package.selling-package",
+      "mappedBy": "tour_package"
+    }
+  }
+}
