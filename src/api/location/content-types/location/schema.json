@@ -15,13 +15,6 @@
     "name": {
       "type": "string"
     },
-    "description": {
-      "type": "customField",
-      "options": {
-        "preset": "toolbar"
-      },
-      "customField": "plugin::ckeditor5.CKEditor"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -47,6 +40,9 @@
       "relation": "oneToMany",
       "target": "api::things-to-do.things-to-do",
       "mappedBy": "location"
+    },
+    "description": {
+      "type": "blocks"
     }
   }
 }

@@ -801,13 +801,6 @@ export interface ApiLocationLocation extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     facts: Attribute.Blocks;
     sublocations: Attribute.Relation<
@@ -820,6 +813,7 @@ export interface ApiLocationLocation extends Schema.CollectionType {
       'oneToMany',
       'api::things-to-do.things-to-do'
     >;
+    description: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -851,19 +845,13 @@ export interface ApiSellingPackageSellingPackage extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     tour_package: Attribute.Relation<
       'api::selling-package.selling-package',
       'oneToOne',
       'api::tour-package.tour-package'
     >;
+    description: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -939,19 +927,13 @@ export interface ApiThingsToDoThingsToDo extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     location: Attribute.Relation<
       'api::things-to-do.things-to-do',
       'manyToOne',
       'api::location.location'
     >;
+    description: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

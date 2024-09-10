@@ -15,13 +15,6 @@
     "name": {
       "type": "string"
     },
-    "description": {
-      "type": "customField",
-      "options": {
-        "preset": "toolbar"
-      },
-      "customField": "plugin::ckeditor5.CKEditor"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -38,6 +31,9 @@
       "relation": "oneToOne",
       "target": "api::tour-package.tour-package",
       "inversedBy": "selling_package"
+    },
+    "description": {
+      "type": "blocks"
     }
   }
 }
