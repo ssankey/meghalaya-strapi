@@ -968,13 +968,6 @@ export interface ApiTourPackageTourPackage extends Schema.CollectionType {
     location: Attribute.String;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     duration: Attribute.String;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
     itinerary: Attribute.Component<'itinerary.itinerary', true>;
     selling_package: Attribute.Relation<
       'api::tour-package.tour-package',
@@ -983,6 +976,7 @@ export interface ApiTourPackageTourPackage extends Schema.CollectionType {
     >;
     inclusion: Attribute.Blocks;
     exclusion: Attribute.Blocks;
+    description: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

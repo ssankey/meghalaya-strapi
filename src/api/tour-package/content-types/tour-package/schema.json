@@ -32,13 +32,6 @@
     "duration": {
       "type": "string"
     },
-    "description": {
-      "type": "customField",
-      "options": {
-        "preset": "toolbar"
-      },
-      "customField": "plugin::ckeditor5.CKEditor"
-    },
     "itinerary": {
       "type": "component",
       "repeatable": true,
@@ -54,6 +47,9 @@
       "type": "blocks"
     },
     "exclusion": {
+      "type": "blocks"
+    },
+    "description": {
       "type": "blocks"
     }
   }
