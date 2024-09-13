@@ -976,25 +976,13 @@ export interface ApiTourPackageTourPackage extends Schema.CollectionType {
         }
       >;
     itinerary: Attribute.Component<'itinerary.itinerary', true>;
-    inclusion: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
-    exclusion: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
     selling_package: Attribute.Relation<
       'api::tour-package.tour-package',
       'oneToOne',
       'api::selling-package.selling-package'
     >;
+    inclusion: Attribute.Blocks;
+    exclusion: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
